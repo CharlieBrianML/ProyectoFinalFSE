@@ -12,24 +12,27 @@
 # ## ###############################################
 
 from tkinter import *    # Carga módulo tk (widgets estándar)
-from tkinter import filedialog as fd
-from tkinter import ttk  # Carga ttk (para widgets nuevos 8.5+)
-from tkinter import messagebox
-from PIL import ImageTk, Image
+# from tkinter import filedialog as fd
+# from tkinter import ttk  # Carga ttk (para widgets nuevos 8.5+)
+#import tkinter as tk
+# from tkinter import messagebox
+# from PIL import ImageTk, Image
 
 import cv2 
 import os
 
 # Define la ventana principal de la aplicación
+global mainWindow
 mainWindow = Tk()
 
 def openFile():
-	"""This function open files of type .oib .tif and .bmp"""
-	print('openFile')
+	"""This function open files of type .bmp .png and .jpg"""
+	file = fd.askopenfilename(initialdir = os.getcwd(), title = 'Seleccione archivo', defaultextension = '*.*', filetypes = (('png files','*.png'),('jpg files','*.jpg'),('bmp files','*.bmp')))
 	
-def saveFile():
-	"""This function save files of type .oib .tif and .bmp"""
-	print('saveFile')
+def openDireactory():
+	"""This function open a directory media"""
+	directory = fd.askdirectory()
+	print('directory: ', directory)
 	
 def createWindowMain():
 	"""Definition of the main window"""
@@ -67,6 +70,17 @@ def createCascade(menu, labelName, option):
 def createButton(text, command, side):
 	"""This function creates a button"""
 	ttk.Button(mainWindow, text=text, command=command).pack(side=side)
+	
+def createButtonXY(text, command, x, y, imagePath):
+	global mainWindow
+	img = Image.open(imagePath)
+	img = img.resize((250, 250), Image.ANTIALIAS) # Redimension (Alto, Ancho)
+	img = ImageTk.PhotoImage(img)
+	#button = tk.Button(mainWindow, text=text, command=command, height=15, width=60, image=img)
+	button = tkinter.Button(mainWindow,command=command, image=img, text=text)
+	button.place(x=150,y=150)
+	#button.pack()
+	
 	
 def createEntry(stringVar,x,y):
 	"""This function creates a entry"""

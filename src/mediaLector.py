@@ -87,40 +87,24 @@ def reproducirUSB():
         reproducirMusicaVideo(varVideoFiles[0])
     elif not varPhotoFiles and not varVideoFiles:#si no hay archivos de fotos ni musica se cargan videos
         reproducirMusicaVideo(varMusicFiles[0])
+		
+def playMedia(directory):
+	#se guardan los nombres de los archivos tipo png en una lista
+	varPhotoFiles = glob.glob(directory+"/*.jpg")#En carpeta fotos
+	#se guardan los nombres de los archivos tipo mp4 en una lista
+	varVideoFiles = glob.glob(directory+"/*.mp4")#EN carpeta videos
+	#se guardan los nombres de los archivos tipo mp3 en una lista
+	varMusicFiles = glob.glob(directory+"/*.mp3")#EN carpeta musica
 
-
-    if((varPhotoFiles and varVideoFiles) or (varPhotoFiles and varMusicFiles) or (varVideoFiles and varMusicFiles)):
-        print("Elige que reproducir:\n1.-Fotos\n2.-Videos\n3.-Musica")
-        opcionReproduccion = input()
-        if opcionReproduccion == '1':
-            print(varPhotoFiles)
-            reproducirFotos(varPhotoFiles,tiempoPorSlide)
-        elif opcionReproduccion == '2':
-            print(len(varVideoFiles))
-            reproducirMusicaVideo(varVideoFiles[0])
-        elif opcionReproduccion == '3':
-            #es olbigatorio poner un indice al llamar la funcion
-            #for x in range(len(varMusicFiles)):
-            #reproducirMusicaVideo(varMusicFiles[x])
-            reproducirMusicaVideo(varMusicFiles[0])
-        elif not varVideoFiles and not varMusicFiles:#si no hay archivos de video se cargan fotos
-            reproducirFotos(varPhotoFiles,tiempoPorSlide)
-        elif not varPhotoFiles and not varMusicFiles:#si no hay archivos de fotos ni musica se cargan videos
-            reproducirMusicaVideo(varVideoFiles[0])
-        elif not varPhotoFiles and not varVideoFiles:#si no hay archivos de fotos ni musica se cargan videos
-            reproducirMusicaVideo(varMusicFiles[0])
-
-
-print("1.- Ver servicio de video online(Netlfix). \n2.- Reproducir musica(Spotify). \n3.- Reproducir contenido en USB")
-opcion = input()
-if opcion == '3':
-    reproducirUSB()
-elif opcion == '1':
-    webbrowser.open("https://www.netflix.com/browse",new=2, autoraise=True)
-elif opcion == '2':
-    webbrowser.open("https://www.spotify.com/mx/",new=2, autoraise=True)
-else:
-    print("Selecciona una opción valida")
-    print(opcion)
+	print('varPhotoFiles: ',varPhotoFiles)
+	print('varVideoFiles: ',varVideoFiles)
+	print('varMusicFiles: ',varMusicFiles)
+    
+	if(len(varPhotoFiles)>0):
+		reproducirFotos(varPhotoFiles,2)
+	if(len(varMusicFiles)>0):
+		reproducirMusicaVideo(varMusicFiles)
+	if(len(varVideoFiles)>0):
+		reproducirMusicaVideo(varVideoFiles)
 
 
