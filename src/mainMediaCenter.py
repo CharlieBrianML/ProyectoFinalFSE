@@ -34,6 +34,9 @@ def openDireactory():
 def eventButton():
 	print('Button press')
 	
+def eventUSB():
+	print('USB detected')	
+	
 # #Se crea la ventana principal del programa
 # it.createWindowMain()
 # #Se crea menu desplegable
@@ -53,6 +56,7 @@ def eventButton():
 
 # it.mainWindow.mainloop()
 
+d={}
 
 mainWindow = tk.Tk()  
 mainWindow.geometry("960x600")
@@ -78,5 +82,13 @@ img4 = Image.open('src_img/Media-logo.jpg')
 img4 = img4.resize((350, 250), Image.ANTIALIAS) # Redimension (Alto, Ancho)
 img4 = ImageTk.PhotoImage(img4)
 tk.Button(mainWindow, command=openDireactory, image=img4, text="Media").place(x=300, y=320)
+
+for l in open('/proc/mounts'):
+	if(l[0] == '/'):
+	l = l.split()
+	d[l[0]] = l[1]
+	
+if('/dev/sdb1' in d):
+	eventUSB()
 
 mainWindow.mainloop()

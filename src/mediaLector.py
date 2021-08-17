@@ -15,6 +15,7 @@ import vlc
 import time
 import glob
 import webbrowser
+import pyautogui
 
 tiempoPorSlide = 4
 def reproducirFotos(mymedia,tiempo):
@@ -109,8 +110,12 @@ def playMedia(directory):
 		
 def playNetflix():
 	webbrowser.open("https://www.netflix.com/browse",new=2, autoraise=True)
+	time.sleep(5)
+	pyautogui.press('f11')
 	
 def playSpotify():
 	webbrowser.open("https://www.spotify.com/mx/",new=2, autoraise=True)
+	time.sleep(5)
+	pyautogui.press('f11')	
 
 
