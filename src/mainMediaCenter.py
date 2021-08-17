@@ -20,6 +20,7 @@ from tkinter import PhotoImage
 from PIL import Image,ImageTk
 from tkinter import filedialog as fd
 import mediaLector as ml
+import multiprocessing
 
 def openFile():
 	"""This function open files of type .bmp .png and .jpg"""
@@ -33,9 +34,21 @@ def openDireactory():
 
 def eventButton():
 	print('Button press')
+	import time
+	time.sleep(10)
+	print('ya termine')
 	
 def eventUSB():
-	print('USB detected')	
+	print('Abriendo multimedios')
+	
+def checkUSBconnection(var):
+	for l in open('/proc/mounts'):
+		if(l[0] == '/'):
+			l = l.split()
+			d[l[0]] = l[1]
+		
+	if('/dev/sdb1' in d):
+		eventUSB()
 	
 # #Se crea la ventana principal del programa
 # it.createWindowMain()
@@ -56,39 +69,40 @@ def eventUSB():
 
 # it.mainWindow.mainloop()
 
-d={}
 
-mainWindow = tk.Tk()  
-mainWindow.geometry("960x600")
-#mainWindow.configure(bg = 'black')
-img3 = Image.open('src_img/background.jpg')
-img3 = img3.resize((960, 600), Image.ANTIALIAS) # Redimension (Alto, Ancho)
-img3 = ImageTk.PhotoImage(img3)
-panel = tk.Label(mainWindow, image = img3)
-panel.image = img3
-panel.pack()
+def interface():
+	d={}
 
-img = Image.open('src_img/Netflix-logo.jpg')
-img = img.resize((350, 250), Image.ANTIALIAS) # Redimension (Alto, Ancho)
-img = ImageTk.PhotoImage(img)
-tk.Button(mainWindow, command=ml.playNetflix, image=img, text="Netflix").place(x=100, y=50)
+	mainWindow = tk.Tk()  
+	mainWindow.geometry("960x600")
+	#mainWindow.configure(bg = 'black')
+	img3 = Image.open('src_img/background.jpg')
+	img3 = img3.resize((960, 600), Image.ANTIALIAS) # Redimension (Alto, Ancho)
+	img3 = ImageTk.PhotoImage(img3)
+	panel = tk.Label(mainWindow, image = img3)
+	panel.image = img3
+	panel.pack()
 
-img2 = Image.open('src_img/Spotify-logo.jpg')
-img2 = img2.resize((350, 250), Image.ANTIALIAS) # Redimension (Alto, Ancho)
-img2 = ImageTk.PhotoImage(img2)
-tk.Button(mainWindow, command=ml.playSpotify, image=img2, text="Spotify").place(x=500, y=50)
+	img = Image.open('src_img/Netflix-logo.jpg')
+	img = img.resize((350, 250), Image.ANTIALIAS) # Redimension (Alto, Ancho)
+	img = ImageTk.PhotoImage(img)
+	tk.Button(mainWindow, command=ml.playNetflix, image=img, text="Netflix").place(x=100, y=50)
 
-img4 = Image.open('src_img/Media-logo.jpg')
-img4 = img4.resize((350, 250), Image.ANTIALIAS) # Redimension (Alto, Ancho)
-img4 = ImageTk.PhotoImage(img4)
-tk.Button(mainWindow, command=openDireactory, image=img4, text="Media").place(x=300, y=320)
+	img2 = Image.open('src_img/Spotify-logo.jpg')
+	img2 = img2.resize((350, 250), Image.ANTIALIAS) # Redimension (Alto, Ancho)
+	img2 = ImageTk.PhotoImage(img2)
+	tk.Button(mainWindow, command=ml.playSpotify, image=img2, text="Spotify").place(x=500, y=50)
 
-for l in open('/proc/mounts'):
-	if(l[0] == '/'):
-		l = l.split()
-		d[l[0]] = l[1]
-	
-if('/dev/sdb1' in d):
-	eventUSB()
+	img4 = Image.open('src_img/Media-logo.jpg')
+	img4 = img4.resize((350, 250), Image.ANTIALIAS) # Redimension (Alto, Ancho)
+	img4 = ImageTk.PhotoImage(img4)
+	tk.Button(mainWindow, command=openDireactory, image=img4, text="Media").place(x=300, y=320)
 
-mainWindow.mainloop()
+	process = multiprocessing.Process(target=checkUSBconnection, args=(None,))
+	process.start()
+
+	mainWindow.mainloop()
+	process.terminate()
+
+if __name__ == '__main__':
+	interface()
