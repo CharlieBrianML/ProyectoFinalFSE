@@ -64,9 +64,9 @@ def playUSB(directory):
 	#se guardan los nombres de los archivos tipo png en una lista
 	varPhotoFiles = glob.glob(directory+"/Media/Fotos/*.jpg")#En carpeta fotos
 	#se guardan los nombres de los archivos tipo mp4 en una lista
-	varVideoFiles = glob.glob(directory+"/Media/Musica/*.mp4")#EN carpeta videos
+	varVideoFiles = glob.glob(directory+"/Media/Videos/*.mp4")#EN carpeta videos
 	#se guardan los nombres de los archivos tipo mp3 en una lista
-	varMusicFiles = glob.glob(directory+"/Media/Videos/*.mp3")#EN carpeta musica
+	varMusicFiles = glob.glob(directory+"/Media/Musica/*.mp3")#EN carpeta musica
 
 	print('varPhotoFiles: ',varPhotoFiles)
 	print('varVideoFiles: ',varVideoFiles)
