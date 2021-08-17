@@ -19,20 +19,6 @@ import pyautogui
 
 tiempoPorSlide = 4
 def reproducirFotos(mymedia,tiempo):
-#instancia del reproductor
-    vlc_instance = vlc.Instance()
-    player = vlc_instance.media_list_player_new()#funcion para hacer slideshow
-    Media = vlc_instance.media_list_new(mymedia)
-    player.set_media_list(Media)
-
-#cada elemento de la lista se reproduce en pantalla por 4 segundos
-    for index, name in enumerate(mymedia):
-        player.play_item_at_index(index)
-        time.sleep(tiempo)#el tiempo de reproduccion de las fotos, videos o musica
-#Media.close()#IMPORTANTE, debe cerrarse el reproductor
-
-tiempoPorSlide = 4
-def reproducirFotos(mymedia,tiempo):
 	#instancia del reproductor
 	vlc_instance = vlc.Instance()
 	player = vlc_instance.media_list_player_new()#funcion para hacer slideshow
