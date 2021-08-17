@@ -106,5 +106,11 @@ def playMedia(directory):
 		reproducirMusicaVideo(varMusicFiles)
 	if(len(varVideoFiles)>0):
 		reproducirMusicaVideo(varVideoFiles)
+		
+def playNetflix():
+	webbrowser.open("https://www.netflix.com/browse",new=2, autoraise=True)
+	
+def playSpotify():
+	webbrowser.open("https://www.spotify.com/mx/",new=2, autoraise=True)
 
 
