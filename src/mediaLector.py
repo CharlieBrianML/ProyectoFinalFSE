@@ -60,34 +60,24 @@ def reproducirMusicaVideo(file):
     player.close()
 
 
-def reproducirUSB():
-    #se guardan los nombres de los archivos tipo png en una lista
-    varPhotoFiles = glob.glob("Fotos/*.png")#En carpeta fotos
-    #se guardan los nombres de los archivos tipo mp4 en una lista
-    varVideoFiles = glob.glob("Videos/*.mp4")#EN carpeta videos
-    #se guardan los nombres de los archivos tipo mp3 en una lista
-    varMusicFiles = glob.glob("Musica/*.mp3")#EN carpeta musica
+def playUSB(directory):
+	#se guardan los nombres de los archivos tipo png en una lista
+	varPhotoFiles = glob.glob(directory+"Media/Fotos/*.jpg")#En carpeta fotos
+	#se guardan los nombres de los archivos tipo mp4 en una lista
+	varVideoFiles = glob.glob(directory+"Media/Musica/*.mp4")#EN carpeta videos
+	#se guardan los nombres de los archivos tipo mp3 en una lista
+	varMusicFiles = glob.glob(directory+"Media/Videos/*.mp3")#EN carpeta musica
+
+	print('varPhotoFiles: ',varPhotoFiles)
+	print('varVideoFiles: ',varVideoFiles)
+	print('varMusicFiles: ',varMusicFiles)
     
-    if (varPhotoFiles and varVideoFiles) or (varPhotoFiles and varMusicFiles) or (varVideoFiles and varMusicFiles) :
-        print("Elige que reproducir:\n1.-Fotos\n2.-Videos\n3.-Musica")
-        opcionReproduccion = input()		
-        if opcionReproduccion == '1':
-            print(varPhotoFiles)
-            reproducirFotos(varPhotoFiles,tiempoPorSlide)
-        elif opcionReproduccion == '2':
-            print(len(varVideoFiles))
-            reproducirMusicaVideo(varVideoFiles[0])	
-        elif opcionReproduccion == '3':
-        #es olbigatorio poner un indice al llamar la funcion
-            #for x in range(len(varMusicFiles)):
-                #reproducirMusicaVideo(varMusicFiles[x])
-            reproducirMusicaVideo(varMusicFiles)	
-    elif not varVideoFiles and not varMusicFiles:#si no hay archivos de video se cargan fotos
-        reproducirFotos(varPhotoFiles,tiempoPorSlide)
-    elif not varPhotoFiles and not varMusicFiles:#si no hay archivos de fotos ni musica se cargan videos
-        reproducirMusicaVideo(varVideoFiles[0])
-    elif not varPhotoFiles and not varVideoFiles:#si no hay archivos de fotos ni musica se cargan videos
-        reproducirMusicaVideo(varMusicFiles[0])
+	if(len(varPhotoFiles)>0):
+		reproducirFotos(varPhotoFiles,2)
+	if(len(varMusicFiles)>0):
+		reproducirMusicaVideo(varMusicFiles)
+	if(len(varVideoFiles)>0):
+		reproducirMusicaVideo(varVideoFiles)	
 		
 def playMedia(directory):
 	#se guardan los nombres de los archivos tipo png en una lista

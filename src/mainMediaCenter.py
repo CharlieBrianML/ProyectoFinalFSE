@@ -34,12 +34,10 @@ def openDireactory():
 
 def eventButton():
 	print('Button press')
-	import time
-	time.sleep(10)
-	print('ya termine')
 	
-def eventUSB():
-	print('Abriendo multimedios')
+def eventUSB(directory):
+	print('Abriendo multimedios...')
+	ml.playUSB(directory)
 	
 def checkUSBconnection(var):
 	while True:
@@ -50,7 +48,7 @@ def checkUSBconnection(var):
 				d[l[0]] = l[1]
 			
 		if('/dev/sdb1' in d):
-			eventUSB()
+			eventUSB(d['/dev/sdb1'])
 
 # #Se crea la ventana principal del programa
 # it.createWindowMain()
