@@ -85,8 +85,8 @@ tk.Button(mainWindow, command=openDireactory, image=img4, text="Media").place(x=
 
 for l in open('/proc/mounts'):
 	if(l[0] == '/'):
-	l = l.split()
-	d[l[0]] = l[1]
+		l = l.split()
+		d[l[0]] = l[1]
 	
 if('/dev/sdb1' in d):
 	eventUSB()
