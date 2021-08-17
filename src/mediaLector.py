@@ -43,7 +43,7 @@ def reproducirFotos(mymedia,tiempo):
 	for index, name in enumerate(mymedia):
 	    player.play_item_at_index(index)
 	    time.sleep(tiempo)#el tiempo de reproduccion de las fotos, videos o musica
-	#Media.close()#IMPORTANTE, debe cerrarse el reproductor
+	Media.close()#IMPORTANTE, debe cerrarse el reproductor
 
 def reproducirMusicaVideo(file):
     while True:
