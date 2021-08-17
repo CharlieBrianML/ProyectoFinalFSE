@@ -35,11 +35,13 @@ def openDireactory():
 def eventButton():
 	print('Button press')
 	
-def eventUSB(directory):
+def eventUSB(directory, play):
 	print('Abriendo multimedios...')
-	ml.playUSB(directory)
+	if play:
+		ml.playUSB(directory)
 	
 def checkUSBconnection(var):
+	play = True
 	while True:
 		d={}
 		for l in open('/proc/mounts'):
@@ -48,7 +50,8 @@ def checkUSBconnection(var):
 				d[l[0]] = l[1]
 			
 		if('/dev/sdb1' in d):
-			eventUSB(d['/dev/sdb1'])
+			eventUSB(d['/dev/sdb1'], play)
+			play = False
 
 # #Se crea la ventana principal del programa
 # it.createWindowMain()
