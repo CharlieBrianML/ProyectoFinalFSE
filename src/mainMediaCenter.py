@@ -42,8 +42,8 @@ def eventUSB():
 	print('Abriendo multimedios')
 	
 def checkUSBconnection(var):
-	d={}
 	while True:
+		d={}
 		for l in open('/proc/mounts'):
 			if(l[0] == '/'):
 				l = l.split()
