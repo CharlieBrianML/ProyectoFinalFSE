@@ -42,6 +42,7 @@ def eventUSB():
 	print('Abriendo multimedios')
 	
 def checkUSBconnection(var):
+	d={}
 	for l in open('/proc/mounts'):
 		if(l[0] == '/'):
 			l = l.split()
@@ -71,7 +72,6 @@ def checkUSBconnection(var):
 
 
 def interface():
-	d={}
 
 	mainWindow = tk.Tk()  
 	mainWindow.geometry("960x600")
