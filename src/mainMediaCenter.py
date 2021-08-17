@@ -43,14 +43,15 @@ def eventUSB():
 	
 def checkUSBconnection(var):
 	d={}
-	for l in open('/proc/mounts'):
-		if(l[0] == '/'):
-			l = l.split()
-			d[l[0]] = l[1]
-		
-	if('/dev/sdb1' in d):
-		eventUSB()
-	
+	while True:
+		for l in open('/proc/mounts'):
+			if(l[0] == '/'):
+				l = l.split()
+				d[l[0]] = l[1]
+			
+		if('/dev/sdb1' in d):
+			eventUSB()
+
 # #Se crea la ventana principal del programa
 # it.createWindowMain()
 # #Se crea menu desplegable
