@@ -31,9 +31,6 @@ def openDireactory():
 	directory = fd.askdirectory()
 	print('directory: ', directory)
 	ml.playMedia(directory)
-
-def eventButton():
-	print('Button press')
 	
 def eventUSB(directory, play):
 	print('Abriendo multimedios...')
@@ -52,25 +49,6 @@ def checkUSBconnection(var):
 		if('/dev/sdb1' in d):
 			eventUSB(d['/dev/sdb1'], play)
 			play = False
-
-# #Se crea la ventana principal del programa
-# it.createWindowMain()
-# #Se crea menu desplegable
-# menu = it.createMenu()
-# #Se añaden las opciones del menu
-# opc1 = it.createOption(menu)
-# it.createCommand(opc1, "Open", it.openFile)
-# it.createCommand(opc1, "Save", it.saveFile)
-# it.createCommand(opc1, "Exit", it.mainWindow.quit)
-# it.createCascade(menu, 'File', opc1)
-
-# opc2 = it.createOption(menu)
-# it.createCascade(menu, 'Media', opc2)
-
-# #it.createButtonXY('Netflix', eventButton, 100, 100, 'src_img/Netflix-logo.jpg')
-# it.createButtonXY('Netflix', eventButton, 100, 100, 'src_img/Netflix-logo.jpg')
-
-# it.mainWindow.mainloop()
 
 
 def interface():
@@ -130,11 +108,11 @@ def interface():
 	imgMedia = ImageTk.PhotoImage(imgMedia)
 	tk.Button(mainWindow, command=openDireactory, image=imgMedia, text="Media").place(x=650, y=420)
 
-	process = multiprocessing.Process(target=checkUSBconnection, args=(None,))
-	process.start()
+	#process = multiprocessing.Process(target=checkUSBconnection, args=(None,))
+	#process.start()
 
 	mainWindow.mainloop()
-	process.terminate()
+	#process.terminate()
 
 if __name__ == '__main__':
 	interface()
