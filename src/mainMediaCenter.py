@@ -108,11 +108,11 @@ def interface():
 	imgMedia = ImageTk.PhotoImage(imgMedia)
 	tk.Button(mainWindow, command=openDireactory, image=imgMedia, text="Media").place(x=650, y=420)
 
-	#process = multiprocessing.Process(target=checkUSBconnection, args=(None,))
-	#process.start()
+	process = multiprocessing.Process(target=checkUSBconnection, args=(None,))
+	process.start()
 
 	mainWindow.mainloop()
-	#process.terminate()
+	process.terminate()
 
 if __name__ == '__main__':
 	interface()
