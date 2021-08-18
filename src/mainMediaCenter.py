@@ -15,6 +15,7 @@ import tkinter as tk
 from tkinter import PhotoImage
 from PIL import Image,ImageTk
 from tkinter import filedialog as fd
+from tkinter import messagebox
 import mediaLector as ml
 import multiprocessing
 
@@ -43,7 +44,9 @@ def checkUSBconnection(var):
 				d[l[0]] = l[1]
 			
 		if('/dev/sdb1' in d):
-			eventUSB(d['/dev/sdb1'], play)
+			answer = messagebox.askyesno(message="¿Desea reproducir el medio USB?", title="Medio UBS detectado")
+			if (answer):
+				eventUSB(d['/dev/sdb1'], play)
 			play = False
 
 
@@ -52,6 +55,7 @@ def interface():
 	mainWindow = tk.Tk()  
 	mainWindow.geometry("960x600")
 	mainWindow.title('Media Player')
+	mainWindow.resizable(width=False,height=False)
 	imgbackground = Image.open('src_img/background.jpg')
 	imgbackground = imgbackground.resize((960, 600), Image.ANTIALIAS) # Redimension (Alto, Ancho)
 	imgbackground = ImageTk.PhotoImage(imgbackground)

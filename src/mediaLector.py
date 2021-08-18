@@ -16,6 +16,7 @@ import time
 import glob
 import webbrowser
 import pyautogui
+from tkinter import messagebox
 
 def reproducirFotos(mymedia,tiempo):
 	#instancia del reproductor
@@ -36,12 +37,14 @@ def reproducirMusicaVideo(file):
 		player = vlc_instance.media_player_new()
 		media = vlc_instance.media_new(f)
 		player.set_media(media)
+		player.set_fullscreen(True) 
 		player.play()
 		time.sleep(1.5)
 		duration = player.get_length() / 1000
 		time.sleep(duration)
 		player.stop()
 	player.stop()
+	
 
 
 def playUSB(directory):
