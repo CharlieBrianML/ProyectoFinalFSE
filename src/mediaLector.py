@@ -85,12 +85,42 @@ def playMedia(directory):
 		reproducirMusicaVideo(varVideoFiles)
 		
 def playNetflix():
-	webbrowser.open("https://www.netflix.com/browse",new=2, autoraise=True)
+	webbrowser.open("https://www.netflix.com/mx/Login",new=2, autoraise=True)
 	time.sleep(5)
 	pyautogui.press('f11')
 	
+def playHBO():
+	webbrowser.open("https://play.hbomax.com/page/urn:hbo:page:home",new=2, autoraise=True)
+	time.sleep(5)
+	pyautogui.press('f11')	
+	
+def playBlim():
+	webbrowser.open("https://www.blim.com/cuenta/ingresar?gclid=Cj0KCQjwvO2IBhCzARIsALw3ASq4nBXhINiZmvdURJlh8LcZZmXWvlVstdnbcGqsWsqXVWU3D6mi3RcaAjSxEALw_wcB",new=2, autoraise=True)
+	time.sleep(5)
+	pyautogui.press('f11')	
+
+def playDisney():
+	webbrowser.open("https://www.disneyplus.com/es-419/login",new=2, autoraise=True)
+	time.sleep(5)
+	pyautogui.press('f11')	
+
+def playPrimeVideo():
+	webbrowser.open("https://www.amazon.com/ap/signin?accountStatusPolicy=P1&clientContext=132-2111988-0815517&language=es_ES&openid.assoc_handle=amzn_prime_video_desktop_us&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.mode=checkid_setup&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.ns.pape=http%3A%2F%2Fspecs.openid.net%2Fextensions%2Fpape%2F1.0&openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.primevideo.com%2Fauth%2Freturn%2Fref%3Dav_auth_ap%3F_encoding%3DUTF8%26location%3D%252Fref%253Ddv_auth_ret",new=2, autoraise=True)
+	time.sleep(5)
+	pyautogui.press('f11')	
+	
+def playClaro():
+	webbrowser.open("https://www.clarovideo.com/mexico/renta?gclid=Cj0KCQjwvO2IBhCzARIsALw3ASpKqiEAQFmYQeMAbE-NrxD9LNbBKzKs4XM1z5eiV31xUuvDyfzNItsaAjKqEALw_wcB",new=2, autoraise=True)
+	time.sleep(5)
+	pyautogui.press('f11')		
+
 def playSpotify():
-	webbrowser.open("https://www.spotify.com/mx/",new=2, autoraise=True)
+	webbrowser.open("https://accounts.spotify.com/es/login",new=2, autoraise=True)
+	time.sleep(5)
+	pyautogui.press('f11')	
+
+def playDeezer():
+	webbrowser.open("https://www.deezer.com/es/login?utm_source=adwords&utm_campaign=acq_mx_sea-brd_web_search_perf_tnb-directsub&utm_medium=search&utm_content=brd_premium&utm_term=deezer&gclid=Cj0KCQjwvO2IBhCzARIsALw3ASrF6P0X4r4c0D3qRLbhsp_iN4aPENcHb7BretasSRkoFRKsgWhqnNwaAvZtEALw_wcB",new=2, autoraise=True)
 	time.sleep(5)
 	pyautogui.press('f11')	
 
