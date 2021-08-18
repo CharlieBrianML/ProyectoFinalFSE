@@ -58,12 +58,12 @@ def playUSB(directory):
 	print('varVideoFiles: ',varVideoFiles)
 	print('varMusicFiles: ',varMusicFiles)
     
-	if(len(varPhotoFiles)>0):
-		reproducirFotos(varPhotoFiles,2)
 	if(len(varMusicFiles)>0):
 		reproducirMusicaVideo(varMusicFiles)
 	if(len(varVideoFiles)>0):
-		reproducirMusicaVideo(varVideoFiles)	
+		reproducirMusicaVideo(varVideoFiles)
+	if(len(varPhotoFiles)>0):
+		reproducirFotos(varPhotoFiles,2)		
 		
 def playMedia(directory):
 	#se guardan los nombres de los archivos tipo png en una lista
