@@ -17,7 +17,6 @@ import glob
 import webbrowser
 import pyautogui
 
-tiempoPorSlide = 4
 def reproducirFotos(mymedia,tiempo):
 	#instancia del reproductor
 	vlc_instance = vlc.Instance()
@@ -32,18 +31,17 @@ def reproducirFotos(mymedia,tiempo):
 	player.stop()#IMPORTANTE, debe cerrarse el reproductor
 
 def reproducirMusicaVideo(file):
-    while True:
-        for f in file:
-            vlc_instance = vlc.Instance()
-            player = vlc_instance.media_player_new()
-            media = vlc_instance.media_new(f)
-            player.set_media(media)
-            player.play()
-            time.sleep(1.5)
-            duration = player.get_length() / 1000
-            time.sleep(duration)
-            player.stop()
-    player.close()
+	for f in file:
+		vlc_instance = vlc.Instance()
+		player = vlc_instance.media_player_new()
+		media = vlc_instance.media_new(f)
+		player.set_media(media)
+		player.play()
+		time.sleep(1.5)
+		duration = player.get_length() / 1000
+		time.sleep(duration)
+		player.stop()
+	player.stop()
 
 
 def playUSB(directory):
@@ -58,12 +56,12 @@ def playUSB(directory):
 	print('varVideoFiles: ',varVideoFiles)
 	print('varMusicFiles: ',varMusicFiles)
     
-	if(len(varMusicFiles)>0):
-		reproducirMusicaVideo(varMusicFiles)
+	if(len(varPhotoFiles)>0):
+		reproducirFotos(varPhotoFiles,2)
 	if(len(varVideoFiles)>0):
 		reproducirMusicaVideo(varVideoFiles)
-	if(len(varPhotoFiles)>0):
-		reproducirFotos(varPhotoFiles,2)		
+	if(len(varMusicFiles)>0):
+		reproducirMusicaVideo(varMusicFiles)		
 		
 def playMedia(directory):
 	#se guardan los nombres de los archivos tipo png en una lista
@@ -85,7 +83,7 @@ def playMedia(directory):
 		reproducirMusicaVideo(varVideoFiles)
 		
 def playNetflix():
-	webbrowser.open("https://www.netflix.com/mx/Login",new=2, autoraise=True)
+	var = webbrowser.open("https://www.netflix.com/mx/Login",new=2, autoraise=True)
 	time.sleep(5)
 	pyautogui.press('f11')
 	
@@ -122,6 +120,4 @@ def playSpotify():
 def playDeezer():
 	webbrowser.open("https://www.deezer.com/es/login?utm_source=adwords&utm_campaign=acq_mx_sea-brd_web_search_perf_tnb-directsub&utm_medium=search&utm_content=brd_premium&utm_term=deezer&gclid=Cj0KCQjwvO2IBhCzARIsALw3ASrF6P0X4r4c0D3qRLbhsp_iN4aPENcHb7BretasSRkoFRKsgWhqnNwaAvZtEALw_wcB",new=2, autoraise=True)
 	time.sleep(5)
-	pyautogui.press('f11')	
-
-
+	pyautogui.press('f11')
