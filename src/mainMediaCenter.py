@@ -32,9 +32,7 @@ def openDireactory():
 def eventUSB(directory, play):
 	print('Abriendo multimedios...')
 	if play:
-		answer = messagebox.askyesno(message="¿Desea reproducir el medio USB?", title="Medio UBS detectado")
-		if (answer):
-			ml.playUSB(directory)
+		ml.playUSB(directory)
 	
 def checkUSBconnection(var):
 	play = True
